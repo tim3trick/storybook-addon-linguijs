@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { I18nProvider } from '@lingui/react';
+import {i18n} from '@lingui/core';
 import { EVENT_GET_LOCALE_ID, EVENT_SET_LOCALE_ID } from '../../../shared';
 
 export default function WithLingui(props) {
@@ -23,7 +24,12 @@ export default function WithLingui(props) {
   const { children, linguiConfig } = props;
 
   return (
-    <I18nProvider {...linguiConfig} language={locale} catalogs={linguiConfig.catalogs}>
+    <I18nProvider 
+       {...linguiConfig}
+       language={locale}
+       catalogs={linguiConfig.catalogs}
+       i18n={i18n}
+     >
       {children}
     </I18nProvider>
   );
